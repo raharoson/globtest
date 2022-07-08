@@ -66,7 +66,7 @@ Exemple de calcul à partir de la données en entrée: [[3, 6], [3, 4], [15, 20]
         Resultat
         [1, 10]
         Données
-        [1, 6]                             [16, 17] [15, 20]
+        [1, 10]                             [16, 17] [15, 20]
 
     6- On clacule l'intervalle disjoint entre [1, 10] et [16, 17]
         Resultat
@@ -76,7 +76,7 @@ Exemple de calcul à partir de la données en entrée: [[3, 6], [3, 4], [15, 20]
     
     7- On clacule l'intervalle disjoint entre [16, 17] et [15, 20]
         Resultat
-        [16, 20]
+        [15, 20]
         Données
         [1, 10][15, 20]
 
