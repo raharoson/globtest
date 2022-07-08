@@ -1,5 +1,8 @@
 # GlobTest
 
+## Install
+
+Run 'composer install'  
 
 ## Enoncé
 
@@ -80,10 +83,7 @@ Exemple de calcul à partir de la données en entrée: [[3, 6], [3, 4], [15, 20]
     => Resultat final [1, 10][15, 20]
     
 
-### Question 2
-
-Codez cette fonction.
-Merci de fournir un fichier contenant :
+### Question 2 Codez cette fonction. Merci de fournir un fichier contenant :
 
 - la fonction 
     foo() se trouve dans la classe src/intervalle/Disjoinintervalle.php
@@ -146,8 +146,6 @@ Merci de fournir un fichier contenant :
     ]
 
 
-### Question 3
-
-Précisez en combien de temps vous avez implémenté cette fonction.
+### Question 3 Précisez en combien de temps vous avez implémenté cette fonction.
 
 45mn
