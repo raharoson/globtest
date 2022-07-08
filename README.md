@@ -75,9 +75,9 @@ Exemple de calcul à partir de la données en entrée: [[3, 6], [3, 4], [15, 20]
         Resultat
         [16, 20]
         Données
-        [1, 10][16, 17]
+        [1, 10][15, 20]
 
-    => Resultat final [1, 10][16, 17]
+    => Resultat final [1, 10][15, 20]
     
 
 ### Question 2
