@@ -19,7 +19,7 @@ class DisjointIntervalTest extends TestCase
         $this->disjointInterval = new DisjointInterval();
     }
 
-    public function testSort()
+    public function testFoo()
     {
         $this->assertSame(
             $this->arrays_are_similar(
