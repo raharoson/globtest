@@ -10,43 +10,50 @@ class DisjointInterval
 {
     use ArrayFunctions;
 
-    /**
-     * Print ensemble d'intervalle disjoint 
-     */
     public function foo(array $arrays): array
     {
-        $sortedArrays = $this->sortBySum($arrays);
+        $sorted = $this->sortByX($arrays);
+        $flatten = $this->array_flatten($sorted);
+        
+        $result = [min($flatten), max($flatten)];
+        $comp = $flatten[1];
+        for ($i = 1; $i < count($flatten) - 2; $i += 2) {
+            if ($comp >= $flatten[$i + 1] && $comp <= $flatten[$i + 2]) {
+                $comp = $flatten[$i + 2]; 
+                continue;
+            }
 
-        $tmpItem = $sortedArrays[0];
-        $results = [$tmpItem];
-        for ($index = 1; $index < count($sortedArrays); $index++) {
-            $merge = $this->merge($tmpItem, $sortedArrays[$index]);
-            $tmpItem = $merge[array_key_last($merge)];
-            array_pop($results);
-            array_push($results, ...$merge);
+            if ($comp < $flatten[$i + 1]) {
+                array_push($result, ...[$comp, $flatten[$i + 1], $flatten[$i + 2]]);
+                $comp = $flatten[$i + 2]; 
+            }
         }
-        return $results;
+        
+        usort($result, fn($a, $b) => $a <=> $b);
+
+        return $this->deflatten(
+            array_unique($result)
+        );
     }
 
     /**
      * Tri par ordre croissante par rapport à la somme par item
      */
-    private function sortBySum(array $arrays): array
+    private function sortByX(array $arrays): array
     {
-        usort($arrays, fn($a, $b) => array_sum($a) <=> array_sum($b));
+        usort($arrays, fn($a, $b) => $a[0] <=> $b[0]);
         return $arrays;
     }
 
-    /** 
-     * Merge entre deux array
-     */
-    private function merge(array $a, array $b): array
+    private function deflatten(array $flatenedArrays): array
     {
-        if ($a[1] < $b[0]) {
-            return [$a, $b];
+        for ($i = 0; $i < count($flatenedArrays) - 1; $i += 2) {
+            $result[] = [$flatenedArrays[$i], $flatenedArrays[$i + 1]];
         }
-        $flatten = $this->array_flatten([$a, $b]);
 
-        return [[min($flatten), max($flatten)]];
+        return $result ?? [];
+
     }
+
+
 }

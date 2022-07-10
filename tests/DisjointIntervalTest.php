@@ -10,8 +10,6 @@ use App\Traits\ArrayFunctions;
 
 class DisjointIntervalTest extends TestCase
 {
-    private $globalSort;
-
     use ArrayFunctions;
 
     public function setUp(): void
@@ -57,6 +55,14 @@ class DisjointIntervalTest extends TestCase
             $this->arrays_are_similar(
                 $this->array_flatten([[1, 10], [15, 20]]),
                 $this->array_flatten($this->disjointInterval->foo([[3, 6], [3, 4], [15, 20], [16, 17], [1, 4], [6, 10], [3, 6]])), 
+            ),
+            true
+        );
+
+        $this->assertSame(
+            $this->arrays_are_similar(
+                $this->array_flatten([[1, 20]]),
+                $this->array_flatten($this->disjointInterval->foo([[3, 6], [3, 4], [15, 20], [16, 17], [1, 4], [6, 15], [3, 6]])), 
             ),
             true
         );
